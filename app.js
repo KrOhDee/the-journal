@@ -7,9 +7,12 @@ const app = express();
 
 const dbURI =
   'mongodb+srv://lja11202526:Cocopuffs2526@thejournal.60wtmcp.mongodb.net/thejournal?retryWrites=true&w=majority';
+const PORT = process.env.PORT || 3000;
 mongoose
   .connect(dbURI)
-  .then((result) => app.listen(3000))
+  .then((result) =>
+    app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
+  )
   .catch((err) => console.log('err'));
 
 app.set('view engine', 'ejs');
